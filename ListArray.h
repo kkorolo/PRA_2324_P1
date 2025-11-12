@@ -11,6 +11,7 @@ class ListArray : public List<T> {
     public:
         ListArray();
         ~ListArray();
+
         void resize (int new_size){
 			T* new_arr = new T[new_size];
 			for(int i=0;i<n;i++){
@@ -19,6 +20,9 @@ class ListArray : public List<T> {
 			delete[] arr;
 			T* arr = new_arr;
 			max = new_size;
+		}
+        int size(){
+			return n;
 		}
         void insert(int pos, T element){
 			if(pos<0||pos>size()-1){
@@ -75,7 +79,7 @@ class ListArray : public List<T> {
 			out<<"]\n";
 			return out;
 		}
-        int searchEl(T element){
+        int search(T element){
 			for(int i=0;i<n;i++){
 				if(arr[i]==element){
 					return i;

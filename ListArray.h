@@ -12,7 +12,7 @@ class ListArray : public List<T> {
         ListArray();
         ~ListArray();
 
-        void resize (int new_size){
+        void resize (int new_size) override{
 			T* new_arr = new T[new_size];
 			for(int i=0;i<n;i++){
 				new_arr[i] = arr[i];
@@ -21,10 +21,10 @@ class ListArray : public List<T> {
 			T* arr = new_arr;
 			max = new_size;
 		}
-        int size(){
+        int size()override{
 			return n;
 		}
-        void insert(int pos, T element){
+        void insert(int pos, T element)override{
 			if(pos<0||pos>size()-1){
 				throw out_of_range("Posicion no valida");
 			}
@@ -37,14 +37,14 @@ class ListArray : public List<T> {
 			}
 			arr[pos] = element;
 		}
-        void append(T element){
+        void append(T element)override{
 			insert(n, element);
 		}
 
-        void prepend(T element){
+        void prepend(T element)override{
 			insert(0, element);
 		}
-        T remove(int pos){
+        T remove(int pos)override{
 			if(pos<0||pos>size()-1){	
 				throw out_of_range("Posicion no valida");
 			}
@@ -54,16 +54,16 @@ class ListArray : public List<T> {
 			}
 			return aux;
 		}
-        T get(int pos){
+        T get(int pos)override{
 			if(pos<0 || pos>size()-1){
 				throw out_of_range("Posicion no valida");
 			}
 			return arr[pos];
 		}
-        T operator[](int pos){
+        T operator[](int pos)override{
 			return get(pos);
         }
-        bool empty(){
+        bool empty()override{
 		    if(n!=0){
 		       		return true;
 		 	}
@@ -79,7 +79,7 @@ class ListArray : public List<T> {
 			out<<"]\n";
 			return out;
 		}
-        int search(T element){
+        int search(T element)override{
 			for(int i=0;i<n;i++){
 				if(arr[i]==element){
 					return i;

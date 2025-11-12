@@ -14,4 +14,5 @@ class Node {
 			out<<node.data;
 			return out;
 		}
+        
 };

@@ -74,6 +74,18 @@ class ListLinked : public List<T> {
                 }
                 else{return true;}
             }
+            T get(int pos)override{
+                    if(pos<0 || pos>size()-1){
+                            throw out_of_range("Posicion no valida");
+                    }
+                    else{
+                        Node<T>* aux = first;
+                            for(int i=0; i<pos;i++){
+                                    aux = aux->next;
+                                }
+                            return aux->data;
+                        }
+                }
         T operator[](int pos){
                 return get(pos);
             }
@@ -108,18 +120,6 @@ class ListLinked : public List<T> {
 
                 }
             }
-            T get(int pos)override{
-                    if(pos<0 || pos>size()-1){
-                            throw out_of_range("Posicion no valida");
-                    }
-                    else{
-                        Node<T>* aux = first;
-                            for(int i=0; i<pos;i++){
-                                    aux = aux->next;
-                                }
-                            return aux->data;
-                        }
-                }
             friend ostream& operator<<(ostream &out, const ListLinked<T> &list){
                     Node<T>* aux = list.first;
                     out<<"ListLinked --> [";
